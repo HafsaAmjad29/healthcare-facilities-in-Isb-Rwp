@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MediMap Twin Cities | Healthcare Facilities of Islamabad &amp; Rawalpindi</title>
+<meta name="description" content="Interactive Web GIS map of hospitals, clinics, pharmacies, doctors, dentists and laboratories in Islamabad and Rawalpindi.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="bar" aria-hidden="true"></div>
+<header>
+  <button id="toggle" type="button" aria-controls="side" aria-expanded="true" aria-label="Show or hide the sidebar">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Filters</span>
+  </button>
+  <span class="logo" aria-hidden="true"></span>
+  <div>
+    <h1>MediMap Twin Cities</h1>
+    <p>Healthcare facilities in Islamabad &amp; Rawalpindi</p>
+  </div>
+</header>
+
+<main>
+  <aside id="side">
+    <details class="about" open>
+      <summary>About this map</summary>
+      <p><b>Study area:</b> Islamabad &amp; Rawalpindi, Pakistan, a dense urban region of about 4 million people with large public hospitals (PIMS, CMH, Holy Family) and many private clinics and pharmacies.</p>
+      <p>Find care near you, filter by type, and click a marker to inspect each facility's details.</p>
+      <div class="stat"><span><strong id="total">0</strong> facilities<small id="age"></small></span><button id="refresh" type="button">Refresh data</button></div>
+    </details>
+    <div class="controls">
+      <label>Study area
+        <select id="area">
+          <option value="both">Islamabad &amp; Rawalpindi</option>
+          <option value="isb">Islamabad</option>
+          <option value="rwp">Rawalpindi</option>
+        </select>
+      </label>
+      <input id="q" type="search" placeholder="Search facility name (e.g. PIMS, Shifa)" enterkeyhint="search" autocomplete="off" aria-label="Search by name">
+      <div class="chips" id="chips"></div>
+      <label class="chip er"><input type="checkbox" id="er"> Emergency services only</label>
+      <form id="place" class="place">
+        <input id="placeq" type="search" placeholder="Go to place (e.g. G-9, Saddar)" aria-label="Search a place">
+        <button type="submit">Go</button>
+        <button type="button" id="locate" title="Use my location">Near me</button>
+      </form>
+      <label>Distance from that point
+        <select id="radius"><option value="0">Any distance</option><option value="1">Within 1 km</option><option value="2">Within 2 km</option><option value="5">Within 5 km</option><option value="10">Within 10 km</option></select>
+      </label>
+      <div class="count" id="count"></div>
+    </div>
+    <ul id="list" aria-label="Facility list"></ul>
+  </aside>
+  <div id="scrim"></div>
+  <div class="mapwrap"><div id="map"></div><div id="status" role="status"></div></div>
+</main>
+
+<footer>
+  Data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> (ODbL) via Overpass API · Search: Nominatim · Built with <a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a> · Web GIS Development Assignment 2 · <b>Hafsa Amjad</b> · Emergency: Rescue 1122
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
